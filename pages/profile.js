@@ -67,10 +67,10 @@ export default function Profile() {
           mt={4}
         >
           <Heading>Sent</Heading>
-          <TransactionCard />
-          <TransactionCard />
-          <TransactionCard />
-          <TransactionCard />
+          <TransactionCard type={"sent"} />
+          <TransactionCard type={"sent"} />
+          <TransactionCard type={"sent"} />
+          <TransactionCard type={"sent"} />
         </Stack>
         <Stack
           w="80%"
@@ -81,10 +81,10 @@ export default function Profile() {
           mt={4}
         >
           <Heading>Received</Heading>
-          <TransactionCard />
-          <TransactionCard />
-          <TransactionCard />
-          <TransactionCard />
+          <TransactionCard type={"received"} />
+          <TransactionCard type={"received"} />
+          <TransactionCard type={"received"} />
+          <TransactionCard type={"received"} />
         </Stack>
       </Flex>
     </Center>
