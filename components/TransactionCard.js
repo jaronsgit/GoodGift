@@ -11,7 +11,15 @@ import {
 } from "@chakra-ui/react";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 
-const TransactionCard = ({ id, userId, type }) => {
+const TransactionCard = ({
+  gift_id,
+  message,
+  receiver,
+  receiver_email,
+  sender,
+  sender_email,
+  type,
+}) => {
   const { colorMode } = useColorMode();
 
   return (
@@ -31,11 +39,9 @@ const TransactionCard = ({ id, userId, type }) => {
         <Box ml="3">
           <Text fontWeight="bold">
             {type == "sent" ? "Delivered to" : "Received from"}
-            <Badge ml="1">roy.cohen@gmail.com</Badge>
+            <Badge ml="1">{type == "sent" ? sender : receiver}</Badge>
           </Text>
-          <Text fontSize="sm">
-            {type == "sent" ? "Delivery date:" : "Reception date:"} 20/01/2021
-          </Text>
+          <Text fontSize="sm">Gift id: {gift_id}</Text>
         </Box>
         <Spacer />
         <Button rightIcon={<ArrowForwardIcon />} variant="outline">
