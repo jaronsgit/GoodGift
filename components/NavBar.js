@@ -26,6 +26,8 @@ export default function NavBar(props) {
   const auth = useAuth();
   const router = useRouter();
 
+  console.log(auth.user);
+
   return (
     <Flex
       paddingRight={8}
@@ -49,14 +51,14 @@ export default function NavBar(props) {
       </NextLink>
       <Spacer />
       <Box>
-        {!auth.userId && (
+        {!auth.user && (
           <NextLink href="/signup">
             <Button colorScheme="teal" mr="4">
               Sign Up
             </Button>
           </NextLink>
         )}
-        {auth.userId ? (
+        {auth.user ? (
           router.pathname == "/profile/[userID]" ? (
             <NextLink href={`/`}>
               <Button colorScheme="teal" onClick={() => auth.signout()}>
@@ -64,7 +66,7 @@ export default function NavBar(props) {
               </Button>
             </NextLink>
           ) : (
-            <NextLink href={`/profile/${auth.userId}`}>
+            <NextLink href={`/profile/${auth.user.uid}`}>
               <Button colorScheme="teal">View Profile</Button>
             </NextLink>
           )

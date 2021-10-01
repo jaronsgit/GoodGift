@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from "react";
+
 import {
   Heading,
   Avatar,
@@ -11,13 +13,31 @@ import {
   useColorModeValue,
   Flex,
 } from "@chakra-ui/react";
+import { Skeleton, SkeletonCircle, SkeletonText } from "@chakra-ui/react";
+import { Spinner } from "@chakra-ui/react";
 
 import TransactionCard from "@/components/TransactionCard";
 import { useRouter } from "next/router";
 
-export default function Profile() {
+import { getSentReceived, useAuth } from "../../firebase/auth";
+
+export default function Profile(props) {
   const router = useRouter();
+  const auth = useAuth();
   const { userID } = router.query;
+  const [sentReceived, setSentReceived] = useState(null);
+
+  useEffect(() => {
+    async function fetchSentReceived() {
+      let sentReceived = await getSentReceived("rtcohen99@gmail.com");
+      setSentReceived(sentReceived);
+    }
+
+    fetchSentReceived();
+  }, []);
+
+  console.log(sentReceived);
+
   return (
     <Center py={6}>
       <Flex w="100%" flexDirection="column" alignItems="center">
@@ -54,11 +74,8 @@ export default function Profile() {
               //   }}
             />
             <Heading fontSize={"2xl"} fontFamily={"body"}>
-              Profile ID: {JSON.stringify(userID)}
+              Welcome, {auth.user.email}
             </Heading>
-            <Text fontWeight={600} color={"gray.500"} mb={4}>
-              User Email
-            </Text>
           </Box>
         </Center>
         <Stack
@@ -70,10 +87,18 @@ export default function Profile() {
           mt={4}
         >
           <Heading>Sent</Heading>
-          <TransactionCard type={"sent"} />
-          <TransactionCard type={"sent"} />
-          <TransactionCard type={"sent"} />
-          <TransactionCard type={"sent"} />
+          {sentReceived ? (
+            sentReceived.sent.map((item) => (
+              <TransactionCard
+                type={"sent"}
+                gift_id={item.gift_id}
+                receiver={item.receiver}
+                sender={item.sender}
+              />
+            ))
+          ) : (
+            <Spinner size="xl" />
+          )}
         </Stack>
         <Stack
           w="80%"
@@ -84,10 +109,18 @@ export default function Profile() {
           mt={4}
         >
           <Heading>Received</Heading>
-          <TransactionCard type={"received"} />
-          <TransactionCard type={"received"} />
-          <TransactionCard type={"received"} />
-          <TransactionCard type={"received"} />
+          {sentReceived ? (
+            sentReceived.received.map((item) => (
+              <TransactionCard
+                type={"received"}
+                gift_id={item.gift_id}
+                receiver={item.receiver}
+                sender={item.sender}
+              />
+            ))
+          ) : (
+            <Spinner size="xl" />
+          )}
         </Stack>
       </Flex>
     </Center>
