@@ -24,6 +24,7 @@ import { useAuth } from "../firebase/auth";
 
 export default function NavBar(props) {
   const auth = useAuth();
+  const router = useRouter();
 
   return (
     <Flex
@@ -56,9 +57,17 @@ export default function NavBar(props) {
           </NextLink>
         )}
         {auth.userId ? (
-          <NextLink href={`/profile/${auth.userId}`}>
-            <Button colorScheme="teal">View Profile</Button>
-          </NextLink>
+          router.pathname == "/profile/[userID]" ? (
+            <NextLink href={`/`}>
+              <Button colorScheme="teal" onClick={() => auth.signout()}>
+                Logout
+              </Button>
+            </NextLink>
+          ) : (
+            <NextLink href={`/profile/${auth.userId}`}>
+              <Button colorScheme="teal">View Profile</Button>
+            </NextLink>
+          )
         ) : (
           <NextLink href="/signin">
             <Button colorScheme="teal">Log in</Button>
