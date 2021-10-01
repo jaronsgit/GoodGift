@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set, onValue, child, get } from "firebase/database";
+import { getDomainLocale } from "next/dist/shared/lib/router/router";
 
 
 const config = {
@@ -20,7 +21,7 @@ function getTransactionData(transId,database){
     const dbRef = ref(database);
     get(child(dbRef, `transactions/`+transId)).then((snapshot) => {
     if (snapshot.exists()) {
-        console.log(snapshot.val());
+        return snapshot.val();
     } else {
         console.log("No data available");
     }
@@ -29,3 +30,14 @@ function getTransactionData(transId,database){
     });
 }
 
+function addTransactionData(t_gift_id, t_message, t_rec_email, t_reciever, t_sender, t_sender_id, database){
+    const transactionID = 2
+    set(ref(database, 'transactions/' + transactionID), {
+        gift_id: t_gift_id,
+        message: t_message,
+        rec_email: t_rec_email,
+        reciever: t_reciever,
+        sender: t_sender,
+        sender_id: t_sender_id
+    });
+}
