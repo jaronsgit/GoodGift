@@ -42,8 +42,11 @@ export default function NavBar(props) {
           {/* <Button>Beneflora</Button> */}
         </Box>
       </NextLink>
-
-      <Spacer />
+      <Box p="2"
+          borderRadius={2}>
+        <Text> You are <b>{false ? 'currently' : 'not'}</b> logged in.</Text>
+      </Box>
+      <Spacer/>
      
       <Box>
       <NextLink href="/signup">
