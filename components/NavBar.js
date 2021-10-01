@@ -20,7 +20,12 @@ import {
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 
+import { useAuth } from "../firebase/auth";
+
 export default function NavBar(props) {
+  const auth = useAuth();
+  const router = useRouter();
+
   return (
     <Flex
       paddingRight={8}
@@ -42,21 +47,32 @@ export default function NavBar(props) {
           {/* <Button>Beneflora</Button> */}
         </Box>
       </NextLink>
-      <Box p="2"
-          borderRadius={2}>
-        <Text> You are <b>{false ? 'currently' : 'not'}</b> logged in.</Text>
-      </Box>
-      <Spacer/>
-     
+      <Spacer />
       <Box>
-      <NextLink href="/signup">
-        <Button colorScheme="teal" mr="4">
-          Sign Up
-        </Button>
-        </NextLink>
-        <NextLink href="/signin">
-        <Button colorScheme="teal">Log in</Button>
-        </NextLink>
+        {!auth.userId && (
+          <NextLink href="/signup">
+            <Button colorScheme="teal" mr="4">
+              Sign Up
+            </Button>
+          </NextLink>
+        )}
+        {auth.userId ? (
+          router.pathname == "/profile/[userID]" ? (
+            <NextLink href={`/`}>
+              <Button colorScheme="teal" onClick={() => auth.signout()}>
+                Logout
+              </Button>
+            </NextLink>
+          ) : (
+            <NextLink href={`/profile/${auth.userId}`}>
+              <Button colorScheme="teal">View Profile</Button>
+            </NextLink>
+          )
+        ) : (
+          <NextLink href="/signin">
+            <Button colorScheme="teal">Log in</Button>
+          </NextLink>
+        )}
       </Box>
     </Flex>
   );

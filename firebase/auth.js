@@ -2,7 +2,8 @@ import React, {useState, useEffect, useContext, createContext} from 'react';
 import queryString from 'query-string';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
-import 'firebase/database'
+import 'firebase/database';
+import { v4 as uuidv4 } from 'uuid';
 
 const config = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -32,33 +33,45 @@ export async function getTransactionData(transId){
      return await promise 
 }
 
-export function addTransactionData(t_gift_id, t_message, t_rec_email, t_reciever, t_sender, t_sender_id){
-
-    getTransactionData("").then((value) => {
-        if (value != null){
-            const transactionID = value.length;
+export async function addTransactionData(t_gift_id, t_message, t_receiver,t_receiver_email,  t_sender, t_sender_email){
+    let promise = new Promise((resolve, reject) => {
+            const transactionID = uuidv4();
             try{
-
                 firebase.database().ref("transactions/"+transactionID).set({
                     gift_id: t_gift_id,
                     message: t_message,
-                    rec_email: t_rec_email,
-                    reciever: t_reciever,
+                    receiver: t_receiver,
+                    receiver_email: t_receiver_email,
                     sender: t_sender,
-                    sender_id: t_sender_id
+                    sender_email: t_sender_email
                 });
-
-                return transactionID
+                resolve(transactionID)
             }
             catch(error){
                 console.log(error)
-            } 
-        }
-        else{
-            console.log("Error");
-        }
-
+                resolve(null)
+            }
     });
+    return await promise;
+}
+
+export async function getSentReceived(userEmail){
+    let promise = new Promise((resolve, reject) => {
+        getTransactionData("").then((value) => {
+            var relatedTransactions = {sent: [], received: []};
+            for (const transaction in value){
+                if (value[transaction].sender_email === userEmail){
+                    relatedTransactions.sent.push(value[transaction])
+                }
+                if (value[transaction].receiver_email === userEmail){
+                    relatedTransactions.received.push(value[transaction])
+                }
+            }
+            resolve(relatedTransactions)
+        });
+    });
+    let result = await promise
+    return result;
 }
 
 const authContext = createContext();
