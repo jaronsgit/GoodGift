@@ -17,27 +17,41 @@ const app = initializeApp(config);
 
 const database = getDatabase(app);
 
-function getTransactionData(transId,database){
+async function getTransactionData(transId,database){
     const dbRef = ref(database);
-    get(child(dbRef, `transactions/`+transId)).then((snapshot) => {
-    if (snapshot.exists()) {
-        return snapshot.val();
-    } else {
-        console.log("No data available");
-    }
-    }).catch((error) => {
-    console.error(error);
+    let promise = get(child(dbRef, `transactions/`+transId));
+    let result = await promise;
+    return result.val()
+
+}
+
+
+function addTransactionData(t_gift_id, t_message, t_rec_email, t_reciever, t_sender, t_sender_id, database){
+
+    getTransactionData("",database).then((value) => {
+        if (value != null){
+            const transactionID = value.length;
+            try{
+                set(ref(database, 'transactions/' + transactionID), {
+                    gift_id: t_gift_id,
+                    message: t_message,
+                    rec_email: t_rec_email,
+                    reciever: t_reciever,
+                    sender: t_sender,
+                    sender_id: t_sender_id
+                });
+                return transactionID
+            }
+            catch(error){
+                console.log(error)
+            } 
+        }
+        else{
+            console.log("Error");
+        }
+
     });
 }
 
-function addTransactionData(t_gift_id, t_message, t_rec_email, t_reciever, t_sender, t_sender_id, database){
-    const transactionID = 2
-    set(ref(database, 'transactions/' + transactionID), {
-        gift_id: t_gift_id,
-        message: t_message,
-        rec_email: t_rec_email,
-        reciever: t_reciever,
-        sender: t_sender,
-        sender_id: t_sender_id
-    });
-}
+
+addTransactionData(0,"test", "rtcohen99@gmail.com", "Roy", "Jaron", "2", database);
