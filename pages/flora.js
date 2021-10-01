@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import {getTransactionData} from "../firebase/Firebase";
+import {getTransactionData} from "../firebase/auth";
 
 export default () => {
     const router = useRouter();
