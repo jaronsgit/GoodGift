@@ -35,7 +35,6 @@ const Arrow = createIcon({
 
 export default function Home() {
   const auth = useAuth();
-  console.log(auth.userId);
 
   return (
     <Container>

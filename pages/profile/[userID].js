@@ -1,3 +1,5 @@
+import React, { useState, useEffect } from "react";
+
 import {
   Heading,
   Avatar,
@@ -15,9 +17,24 @@ import {
 import TransactionCard from "@/components/TransactionCard";
 import { useRouter } from "next/router";
 
-export default function Profile() {
+import { getSentReceived } from "../../firebase/auth";
+
+export default function Profile(props) {
   const router = useRouter();
   const { userID } = router.query;
+  const [sentReceived, setSentReceived] = useState(null);
+
+  useEffect(() => {
+    async function fetchSentReceived() {
+      let sentReceived = await getSentReceived("rtcohen99@gmail.com");
+      setSentReceived(sentReceived);
+    }
+
+    fetchSentReceived();
+  }, []);
+
+  console.log(sentReceived);
+
   return (
     <Center py={6}>
       <Flex w="100%" flexDirection="column" alignItems="center">
