@@ -44,11 +44,16 @@ export default function NavBar(props) {
       </NextLink>
 
       <Spacer />
+     
       <Box>
+      <NextLink href="/signup">
         <Button colorScheme="teal" mr="4">
           Sign Up
         </Button>
+        </NextLink>
+        <NextLink href="/signin">
         <Button colorScheme="teal">Log in</Button>
+        </NextLink>
       </Box>
     </Flex>
   );
