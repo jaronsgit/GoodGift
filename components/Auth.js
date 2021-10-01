@@ -63,3 +63,122 @@ const AuthContent = ({register, errors, type, ...rest}) => (
     </Stack>
 );
 
+const FullScreenAuth = ({type, onSubmit}) => {
+    const {colorMode} = useColorMode();
+    const {handleSubmit, register, errors} = useForm();
+
+    return (
+        <Flex align="center" justify="center" h="100vh">
+            <AuthContent
+                as="form"
+                backgroundColor={['none', colorMode === 'light' ? 'gray.100' : 'gray.900']}
+                borderRadius={8}
+                errors={errors}
+                maxWidth="400px"
+                onSubmit={handleSubmit((data) => onSubmit(data))}
+                px={8}
+                py={12}
+                register={register}
+                shadow={[null, 'md']}
+                spacing={3}
+                type={type}
+                w="100%"
+            />
+        </Flex>
+    );
+};
+
+const AuthModal = ({isOpen, onClose, type, onSubmit}) => {
+    const {handleSubmit, register, errors} = useForm();
+
+    return (
+        <Modal isOpen={isOpen} onClose={onClose} size="400px">
+            <ModalOverlay />
+            <ModalContent borderRadius={4}>
+                <ModalCloseButton />
+                <ModalBody>
+                    <Flex align="center" justify="center">
+                        <AuthContent
+                            as="form"
+                            errors={errors}
+                            onSubmit={handleSubmit((data) => onSubmit(data))}
+                            px={8}
+                            py={12}
+                            register={register}
+                            spacing={3}
+                            type={type}
+                            w="100%"
+                        />
+                    </Flex>
+                </ModalBody>
+            </ModalContent>
+        </Modal>
+    );
+};
+
+export const withAuthModal = (Component) => (props) => {
+    const {isOpen, onOpen, onClose} = useDisclosure();
+    const auth = useAuth();
+    const toast = useToast();
+
+    const signUp = ({email, pass}) => {
+        auth.signup(email, pass)
+            .then(() => {
+                toast({
+                    title: 'Success!',
+                    description: 'Your account has been created.',
+                    status: 'success',
+                    duration: 3000,
+                    isClosable: true
+                });
+                onClose();
+            })
+            .catch((error) => {
+                toast({
+                    title: 'An error occurred.',
+                    description: error.message,
+                    status: 'error',
+                    duration: 9000,
+                    isClosable: true
+                });
+            });
+    };
+    return (
+        <>
+            <AuthModal isOpen={isOpen} onClose={onClose} type="Sign Up" onSubmit={signUp} />
+            <Component openAuthModal={onOpen} {...props} />
+        </>
+    );
+};
+
+export const withSignInRedirect = (Component) => (props) => {
+    const {isOpen, onOpen, onClose} = useDisclosure();
+    const auth = useAuth();
+    const toast = useToast();
+    const router = useRouter();
+
+    const signIn = ({email, pass}) => {
+        auth.signin(email, pass)
+            .then(() => {
+                router.push('/');
+            })
+            .catch((error) => {
+                toast({
+                    title: 'An error occurred.',
+                    description: error.message,
+                    status: 'error',
+                    duration: 9000,
+                    isClosable: true
+                });
+            });
+    };
+
+    return (
+        <>
+            <AuthModal isOpen={isOpen} onClose={onClose} type="Sign In" onSubmit={signIn} />
+            <Component onSignIn={onOpen} {...props} />
+        </>
+    );
+};
+
+export default FullScreenAuth;
