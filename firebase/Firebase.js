@@ -25,7 +25,6 @@ async function getTransactionData(transId,database){
 
 }
 
-
 function addTransactionData(t_gift_id, t_message, t_rec_email, t_reciever, t_sender, t_sender_id, database){
 
     getTransactionData("",database).then((value) => {
@@ -40,6 +39,7 @@ function addTransactionData(t_gift_id, t_message, t_rec_email, t_reciever, t_sen
                     sender: t_sender,
                     sender_id: t_sender_id
                 });
+
                 return transactionID
             }
             catch(error){
