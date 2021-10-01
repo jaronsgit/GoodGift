@@ -46,9 +46,7 @@ export default function NavBar(props) {
           {/* <Button>Beneflora</Button> */}
         </Box>
       </NextLink>
-
       <Spacer />
-
       <Box>
         {!auth.userId && (
           <NextLink href="/signup">
