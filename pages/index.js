@@ -17,7 +17,6 @@ import {
 } from "@chakra-ui/react";
 
 import Container from "@/components/Container";
-import firebase from "../firebase/Firebase";
 
 const Arrow = createIcon({
   displayName: "Arrow",
