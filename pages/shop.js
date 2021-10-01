@@ -24,6 +24,7 @@ import {
   StatGroup,
 } from "@chakra-ui/react"
 import TransactionCard from "@/components/TransactionCard";
+import { useRouter } from 'next/router'
 
 const flower1 = {
     imageUrl: "https://www.almanac.com/sites/default/files/image_nodes/tulips-multicolored.jpg",
@@ -77,13 +78,17 @@ const flower1 = {
               desc: "The Coral Reef Alliance (CORAL) is a non-profit, environmental NGO that is on a mission to save the world's coral reefs. We work collaboratively with communities to reduce direct threats to reefs in ways that provide lasting benefits to people and wildlife. In parallel, CORAL is actively expanding the scientific understanding of how corals adapt to climate change and applying this information to give reefs the best chance to thrive for generations to come. This combined expertise uniquely positions us to achieve our mission by rallying the conservation community around scalable and effective solutions for coral reefs. "}
 
 const FlowerProduct = ({product}) => {
-    
+  const router = useRouter()
+  const handleClick = (e) => {
+    e.preventDefault()
+    router.push("/gifts")
+  }
     return (
       
       <Box _hover={{
         bg: "gray.100",
         cursor: "pointer",
-      }} maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
+      }} maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden" onClick={handleClick}>
         <Image src={product.imageUrl} alt={product.imageAlt} />
   
         <Box p="6">
@@ -128,6 +133,7 @@ const FlowerProduct = ({product}) => {
   }
 
 export default function Shop() {
+ 
     return (
         <Center py={6}>
             <Flex w="100%" flexDirection="column" alignItems="center">
