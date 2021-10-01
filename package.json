@@ -13,12 +13,12 @@
     "@emotion/styled": "^11.3.0",
     "@react-three/drei": "^7.12.5",
     "@react-three/fiber": "^7.0.7",
-    "firebase": "7.7.0",
+    "firebase": "7.14.5",
     "framer-motion": "^4.1.17",
     "next": "11.1.2",
     "query-string": "^7.0.1",
-    "react": "16.14.0",
-    "react-dom": "16.14.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
     "react-hook-form": "4.5.5",
     "three": "^0.133.0"
   }

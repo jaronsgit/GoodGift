@@ -2,6 +2,7 @@ import React, {useState, useEffect, useContext, createContext} from 'react';
 import queryString from 'query-string';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/database'
 
 const config = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -15,6 +16,50 @@ const config = {
 
 if (!firebase.apps.length) {
     firebase.initializeApp(config);
+   
+}
+
+export async function getTransactionData(transId){
+
+    let dbref = firebase.database().ref("transactions/"+transId);
+    let promise = new Promise((resolve,reject) => {dbref.on("value", function(snapshot) {
+        
+        resolve(snapshot.val());
+     }, function (error) {
+        console.log("Error: " + error.code);
+        resolve(null)
+     });})
+    
+     return await promise 
+}
+
+export function addTransactionData(t_gift_id, t_message, t_rec_email, t_reciever, t_sender, t_sender_id){
+
+    getTransactionData("").then((value) => {
+        if (value != null){
+            const transactionID = value.length;
+            try{
+
+                firebase.database().ref("transactions/"+transactionID).set({
+                    gift_id: t_gift_id,
+                    message: t_message,
+                    rec_email: t_rec_email,
+                    reciever: t_reciever,
+                    sender: t_sender,
+                    sender_id: t_sender_id
+                });
+
+                return transactionID
+            }
+            catch(error){
+                console.log(error)
+            } 
+        }
+        else{
+            console.log("Error");
+        }
+
+    });
 }
 
 const authContext = createContext();
