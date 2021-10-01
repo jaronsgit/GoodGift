@@ -2,7 +2,6 @@ import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set, onValue, child, get } from "firebase/database";
 import { getDomainLocale } from "next/dist/shared/lib/router/router";
 
-
 const config = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
     authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -17,7 +16,7 @@ const app = initializeApp(config);
 
 const database = getDatabase(app);
 
-async function getTransactionData(transId,database){
+export async function getTransactionData(transId){
     const dbRef = ref(database);
     let promise = get(child(dbRef, `transactions/`+transId));
     let result = await promise;
@@ -25,7 +24,7 @@ async function getTransactionData(transId,database){
 
 }
 
-function addTransactionData(t_gift_id, t_message, t_rec_email, t_reciever, t_sender, t_sender_id, database){
+export function addTransactionData(t_gift_id, t_message, t_rec_email, t_reciever, t_sender, t_sender_id){
 
     getTransactionData("",database).then((value) => {
         if (value != null){
@@ -39,7 +38,7 @@ function addTransactionData(t_gift_id, t_message, t_rec_email, t_reciever, t_sen
                     sender: t_sender,
                     sender_id: t_sender_id
                 });
-
+                console.log("http://localhost:3000/flora?ID=" + transactionID)
                 return transactionID
             }
             catch(error){
