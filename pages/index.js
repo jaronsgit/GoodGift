@@ -18,6 +18,8 @@ import {
 
 import Container from "@/components/Container";
 
+import { useAuth } from "../firebase/auth";
+
 const Arrow = createIcon({
   displayName: "Arrow",
   viewBox: "0 0 72 24",
@@ -32,6 +34,9 @@ const Arrow = createIcon({
 });
 
 export default function Home() {
+  const auth = useAuth();
+  console.log(auth.userId);
+
   return (
     <Container>
       <ChakraContainer maxW={"3xl"}>

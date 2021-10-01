@@ -20,7 +20,11 @@ import {
 import NextLink from "next/link";
 import { useRouter } from "next/router";
 
+import { useAuth } from "../firebase/auth";
+
 export default function NavBar(props) {
+  const auth = useAuth();
+
   return (
     <Flex
       paddingRight={8}
@@ -44,16 +48,24 @@ export default function NavBar(props) {
       </NextLink>
 
       <Spacer />
-     
+
       <Box>
-      <NextLink href="/signup">
-        <Button colorScheme="teal" mr="4">
-          Sign Up
-        </Button>
-        </NextLink>
-        <NextLink href="/signin">
-        <Button colorScheme="teal">Log in</Button>
-        </NextLink>
+        {!auth.userId && (
+          <NextLink href="/signup">
+            <Button colorScheme="teal" mr="4">
+              Sign Up
+            </Button>
+          </NextLink>
+        )}
+        {auth.userId ? (
+          <NextLink href={`/profile/${auth.userId}`}>
+            <Button colorScheme="teal">View Profile</Button>
+          </NextLink>
+        ) : (
+          <NextLink href="/signin">
+            <Button colorScheme="teal">Log in</Button>
+          </NextLink>
+        )}
       </Box>
     </Flex>
   );
