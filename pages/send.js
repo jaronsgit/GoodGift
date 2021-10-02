@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import "react"
 import { addTransactionData } from "../firebase/auth";
+import { Alert, AlertIcon, AlertTitle } from "@chakra-ui/react";
 
 import {
     Button,
@@ -38,6 +39,15 @@ export default function send() {
             });
         }
     };
+
+    function AlertPop (props) {
+        return (
+          <Alert status="error">
+            {/* <AlertIcon /> */}
+            <AlertTitle mr={2} fontSize="xs">{props.title}</AlertTitle>
+          </Alert>
+        );
+       }
   
             
     return (
@@ -46,22 +56,25 @@ export default function send() {
         <Stack>
             <FormControl>
                 <FormLabel htmlFor="your_name_label">Your Name</FormLabel>
-                <Input name="your_name" placeholder="Claire" ref={register({ required: true })}/>
+                <Input name="your_name" placeholder="Claire" ref={register({ required: "Your name is required." })}/>
+                {errors.your_name && <AlertPop title={errors.your_name.message} />}
             </FormControl>
 
             <FormControl>
                 <FormLabel htmlFor="receivers_name_label">Receiver's Name</FormLabel>
-                <Input name="receivers_name" placeholder="Joe" ref={register({ required: true })}/>
+                <Input name="receivers_name" placeholder="Joe" ref={register({ required: "The receiver's name is required." })}/>
+                {errors.receivers_name && <AlertPop title={errors.receivers_name.message} />}
             </FormControl>
 
             <FormControl>
                 <FormLabel htmlFor="email_label">Email</FormLabel>
-                <Input name="email" placeholder="123@example.com" ref={register({ required: true })} />
+                <Input name="email" placeholder="123@example.com" ref={register({required:  "The receiver's email is required." })} />
+                {errors.email && <AlertPop title={errors.email.message} />}
             </FormControl>
 
             <FormControl>
                 <FormLabel htmlFor="message_label">Message</FormLabel>
-                <Textarea name="message" placeholder='"Have a great day!"' ref={register({ required: true })} />
+                <Textarea name="message" placeholder='"Have a great day!"' ref={register({ required: false })} />
             </FormControl>
             <Button type='submit' color='white' bg='gray.900' width='100%' h={55} mt={5}>Proceed to Payment</Button>
         </Stack>
