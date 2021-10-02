@@ -29,7 +29,7 @@ export default function Profile(props) {
 
   useEffect(() => {
     async function fetchSentReceived() {
-      let sentReceived = await getSentReceived("rtcohen99@gmail.com");
+      let sentReceived = await getSentReceived(auth.user.email);
       setSentReceived(sentReceived);
     }
 
