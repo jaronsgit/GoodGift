@@ -90,7 +90,7 @@ export default function ProductPage(props) {
           left="50%"
           style={{ transform: "translate(-50%, -50%)" }}
         >
-          <NextLink href="/shop">
+          <NextLink href="/send">
             <Button
               colorScheme={"teal"}
               bg={"teal.400"}
