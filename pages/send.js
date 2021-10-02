@@ -68,7 +68,7 @@ export default function send() {
 
             <FormControl>
                 <FormLabel htmlFor="email_label">Email</FormLabel>
-                <Input name="email" placeholder="123@example.com" ref={register({required:  "The receiver's email is required." })} />
+                <Input name="email" placeholder="123@example.com" ref={register({required: "The receiver's name is required.", pattern: {value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, message: "Please enter a valid email for the receiver."}})} />
                 {errors.email && <AlertPop title={errors.email.message} />}
             </FormControl>
 
