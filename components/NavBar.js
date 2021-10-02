@@ -46,8 +46,14 @@ export default function NavBar(props) {
           borderRadius={2}
         >
           <Heading size="md">Beneflora</Heading>
+
           {/* <Button>Beneflora</Button> */}
         </Box>
+      </NextLink>
+      <NextLink href="/shop">
+        <Button colorScheme="teal" ml="8">
+          Shop
+        </Button>
       </NextLink>
       <Spacer />
       <Box>
