@@ -8,7 +8,6 @@ import {
   Container as ChakraContainer,
 } from "@chakra-ui/react";
 
-
 export default function Container(props) {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
@@ -17,7 +16,7 @@ export default function Container(props) {
 
   const { children, ...customMeta } = props;
   const meta = {
-    title: "Beneflora",
+    title: "GoodGift",
     description: ``,
     image: "",
     type: "website",
