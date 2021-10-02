@@ -62,7 +62,7 @@ export default function ProductPage(props) {
   return (
     <Center py={6} w="100%">
       <Box
-        h="500px"
+        h="800px"
         w="80%"
         boxShadow="dark-lg"
         rounded="md"
