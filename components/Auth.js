@@ -95,7 +95,7 @@ const AuthModal = ({ isOpen, onClose, type, onSubmit }) => {
   const { handleSubmit, register, errors } = useForm();
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} size="400px">
+    <Modal isOpen={isOpen} onClose={onClose} w="100px">
       <ModalOverlay />
       <ModalContent borderRadius={4}>
         <ModalCloseButton />
@@ -110,7 +110,7 @@ const AuthModal = ({ isOpen, onClose, type, onSubmit }) => {
               register={register}
               spacing={3}
               type={type}
-              w="100%"
+              //   w="100%"
             />
           </Flex>
         </ModalBody>
