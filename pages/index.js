@@ -105,49 +105,55 @@ export default function Home() {
           </Stack>
         </Stack>
         <Center h="100px" color="black">
-        <Heading>Our Mission</Heading>
-</Center>
+          <Heading>Our Mission</Heading>
+        </Center>
         <Stack direction={["column", "row"]} spacing="24px">
           <Box borderRadius="full" boxSize="150px">
-          <AspectRatio maxW="150px" ratio={1 / 1}>
-            <Image boxSize="150px" borderRadius="full"
-              objectFit="cover" src="https://images.unsplash.com/photo-1562089727-90aa996a6f18?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3174&q=80" />
+            <AspectRatio maxW="150px" ratio={1 / 1}>
+              <Image boxSize="150px" borderRadius="full"
+                objectFit="cover" src="https://images.unsplash.com/photo-1562089727-90aa996a6f18?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3174&q=80" />
             </AspectRatio>
           </Box>
           <Spacer />
           <Box boxSize="150px">
-          <AspectRatio maxW="150px" ratio={1 / 1}>
-            <Image boxSize="150px" borderRadius="full"
-              objectFit="cover" src="https://images.unsplash.com/photo-1516937941344-00b4e0337589?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2970&q=80" />
- </AspectRatio>
+            <AspectRatio maxW="150px" ratio={1 / 1}>
+              <Image boxSize="150px" borderRadius="full"
+                objectFit="cover" src="https://images.unsplash.com/photo-1516937941344-00b4e0337589?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2970&q=80" />
+            </AspectRatio>
           </Box>
           <Spacer />
           <Box boxSize="150px">
-          <AspectRatio maxW="150px" ratio={1 / 1}>
-            <Image boxSize="150px" borderRadius="full"
-              objectFit="cover" src="https://images.unsplash.com/photo-1494807143020-e958f7a1cc66?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3087&q=80" />
- </AspectRatio>
+            <AspectRatio maxW="150px" ratio={1 / 1}>
+              <Image boxSize="150px" borderRadius="full"
+                objectFit="cover" src="https://images.unsplash.com/photo-1494807143020-e958f7a1cc66?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3087&q=80" />
+            </AspectRatio>
           </Box>
           <Spacer />
           <Box boxSize="150px">
-          <AspectRatio maxW="150px" ratio={1 / 1}>
-            <Image boxSize="150px" borderRadius="full"
-              objectFit="cover" src=" https://images.unsplash.com/photo-1624324378932-68e20f332982?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2970&q=80" />
- </AspectRatio>
+            <AspectRatio maxW="150px" ratio={1 / 1}>
+              <Image boxSize="150px" borderRadius="full"
+                objectFit="cover" src=" https://images.unsplash.com/photo-1624324378932-68e20f332982?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2970&q=80" />
+            </AspectRatio>
           </Box>
           <Spacer />
           <Box boxSize="150px">
-          <AspectRatio maxW="150px" ratio={1 / 1}>
-            <Image boxSize="150px" borderRadius="full"
-              objectFit="cover" src=" https://images.unsplash.com/photo-1615092296061-e2ccfeb2f3d6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" />
- </AspectRatio>
+            <AspectRatio maxW="150px" ratio={1 / 1}>
+              <Image boxSize="150px" borderRadius="full"
+                objectFit="cover" src=" https://images.unsplash.com/photo-1615092296061-e2ccfeb2f3d6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" />
+            </AspectRatio>
           </Box>
-          </Stack>
-          <Center bg ="teal" h="100px" color="white">
-        <Text>Help fight climate change by supporting the top organisations</Text>
-</Center>
+        </Stack>
+        <Center bg="teal" h="200px" w="700px" color="white">
+          <Text fontSize="large">Our mission is to fight climate change by providing people with a clean, friendly and convenient way to fight. Using GoodGifts, you can gift people with virtual 3D interactive plants with 100% of the proceeds going to various climate action causes! Each sendable plant is associated with a non-profit organization that is tirelessly climbing this uphill climate change battle, and they can use your help!</Text>
+        </Center>
+        <Heading
+          fontWeight={600}
+          fontSize={{ base: "3xl", sm: "4xl", md: "7xl" }}
+          lineHeight={"100%"}>
+          Help your friends grow their virtual garden!
+        </Heading>
       </ChakraContainer>
-     
+
     </Container>
   );
 }
