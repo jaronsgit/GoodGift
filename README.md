@@ -10,7 +10,7 @@ We have three main goals:
 - Provide people with a clean, friendly and convenient way to contribute. 
 
 - Provide non-profit organisations with ways to raise money.
-- 
+
 ## How to run
 
 ```
