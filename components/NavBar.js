@@ -45,7 +45,7 @@ export default function NavBar(props) {
           }}
           borderRadius={2}
         >
-          <Heading size="md">Beneflora</Heading>
+          <Heading size="md">GoodGift</Heading>
 
           {/* <Button>Beneflora</Button> */}
         </Box>

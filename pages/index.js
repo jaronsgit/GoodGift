@@ -1,11 +1,11 @@
 import Head from "next/head";
-import { Image } from "@chakra-ui/react"
-import { Center, Square, Circle } from "@chakra-ui/react"
+import { Image } from "@chakra-ui/react";
+import { Center, Square, Circle } from "@chakra-ui/react";
 import NextLink from "next/link";
-import { Flex, Spacer } from "@chakra-ui/react"
-import { SimpleGrid } from "@chakra-ui/react"
+import { Flex, Spacer } from "@chakra-ui/react";
+import { SimpleGrid } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { AspectRatio } from "@chakra-ui/react"
+import { AspectRatio } from "@chakra-ui/react";
 // import styles from '../styles/Home.module.css'
 
 import {
@@ -110,52 +110,80 @@ export default function Home() {
         <Stack direction={["column", "row"]} spacing="24px">
           <Box borderRadius="full" boxSize="150px">
             <AspectRatio maxW="150px" ratio={1 / 1}>
-              <Image boxSize="150px" borderRadius="full"
-                objectFit="cover" src="https://images.unsplash.com/photo-1562089727-90aa996a6f18?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3174&q=80" />
+              <Image
+                boxSize="150px"
+                borderRadius="full"
+                objectFit="cover"
+                src="https://images.unsplash.com/photo-1562089727-90aa996a6f18?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3174&q=80"
+              />
             </AspectRatio>
           </Box>
           <Spacer />
           <Box boxSize="150px">
             <AspectRatio maxW="150px" ratio={1 / 1}>
-              <Image boxSize="150px" borderRadius="full"
-                objectFit="cover" src="https://images.unsplash.com/photo-1516937941344-00b4e0337589?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2970&q=80" />
+              <Image
+                boxSize="150px"
+                borderRadius="full"
+                objectFit="cover"
+                src="https://images.unsplash.com/photo-1516937941344-00b4e0337589?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2970&q=80"
+              />
             </AspectRatio>
           </Box>
           <Spacer />
           <Box boxSize="150px">
             <AspectRatio maxW="150px" ratio={1 / 1}>
-              <Image boxSize="150px" borderRadius="full"
-                objectFit="cover" src="https://images.unsplash.com/photo-1494807143020-e958f7a1cc66?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3087&q=80" />
+              <Image
+                boxSize="150px"
+                borderRadius="full"
+                objectFit="cover"
+                src="https://images.unsplash.com/photo-1494807143020-e958f7a1cc66?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3087&q=80"
+              />
             </AspectRatio>
           </Box>
           <Spacer />
           <Box boxSize="150px">
             <AspectRatio maxW="150px" ratio={1 / 1}>
-              <Image boxSize="150px" borderRadius="full"
-                objectFit="cover" src=" https://images.unsplash.com/photo-1624324378932-68e20f332982?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2970&q=80" />
+              <Image
+                boxSize="150px"
+                borderRadius="full"
+                objectFit="cover"
+                src=" https://images.unsplash.com/photo-1624324378932-68e20f332982?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2970&q=80"
+              />
             </AspectRatio>
           </Box>
           <Spacer />
           <Box boxSize="150px">
             <AspectRatio maxW="150px" ratio={1 / 1}>
-              <Image boxSize="150px" borderRadius="full"
-                objectFit="cover" src=" https://images.unsplash.com/photo-1615092296061-e2ccfeb2f3d6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" />
+              <Image
+                boxSize="150px"
+                borderRadius="full"
+                objectFit="cover"
+                src=" https://images.unsplash.com/photo-1615092296061-e2ccfeb2f3d6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+              />
             </AspectRatio>
           </Box>
         </Stack>
         <Stack
-          bg={"teal.500"}
+          bg={"teal.400"}
           py={16}
           px={8}
           spacing={{ base: 8, md: 10 }}
-          align={'center'}
-          direction={'column'}>
+          align={"center"}
+          direction={"column"}
+          borderRadius="xl"
+        >
           <Text
-            fontSize={{ base: 'xl', md: '2xl' }}
-            textAlign={'center'}
-            maxW={'3xl'}>
-            Our mission is to fight climate change by providing people with a clean, friendly and convenient way to fight.Using GoodGifts, you can gift people with virtual 3D interactive plants with 100% of the proceeds going to various climate action causes!
-            Each sendable plant is associated with a non-profit organization that is tirelessly climbing this uphill climate change battle, and they can use your help!
+            fontSize={{ base: "xl", md: "2xl" }}
+            textAlign={"center"}
+            maxW={"3xl"}
+            color="white"
+          >
+            Our mission is to fight climate change by providing people with a
+            clean, friendly and convenient way to fight. Using GoodGift, you can
+            send virtual 3D interactive gifts with 100% of the proceeds going to
+            various climate action causes! Each sendable gift is associated with
+            a non-profit organization that is tirelessly climbing this uphill
+            climate change battle, and they can use your help!
           </Text>
         </Stack>
         <Stack
@@ -169,15 +197,13 @@ export default function Home() {
             fontSize={{ base: "3xl", sm: "4xl", md: "7xl" }}
             lineHeight={"110%"}
           >
-            Help your friends grow their <br />
+            Do good. <br />
             <Text as={"span"} color={"teal.400"}>
-              virtual garden!
+              Send a gift.
             </Text>
           </Heading>
-
         </Stack>
       </ChakraContainer>
-
     </Container>
   );
 }
