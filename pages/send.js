@@ -18,6 +18,7 @@ import {
   Image,
   Flex,
 } from "@chakra-ui/react";
+import axios from "axios";
 
 export default function send() {
   const auth = useAuth();
@@ -44,6 +45,33 @@ export default function send() {
         status: "success",
         duration: 4000,
       });
+
+      axios
+        .post("/api/send", {
+          message: data.message,
+          sender: data.your_name,
+          receiver_email: data.email,
+        })
+        .then((response) => {
+          console.log(response);
+          toast({
+            title: "Gift sent!",
+            description: "",
+            status: "success",
+            duration: 9000,
+            isClosable: true,
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+          toast({
+            title: "Oops, something went wrong.",
+            description: "Well, this is embarrassing.",
+            status: "error",
+            duration: 9000,
+            isClosable: true,
+          });
+        });
     }
   }
 
