@@ -143,15 +143,39 @@ export default function Home() {
             </AspectRatio>
           </Box>
         </Stack>
-        <Center bg="teal" h="200px" w="700px" color="white">
-          <Text fontSize="large">Our mission is to fight climate change by providing people with a clean, friendly and convenient way to fight. Using GoodGifts, you can gift people with virtual 3D interactive plants with 100% of the proceeds going to various climate action causes! Each sendable plant is associated with a non-profit organization that is tirelessly climbing this uphill climate change battle, and they can use your help!</Text>
-        </Center>
-        <Heading
-          fontWeight={600}
-          fontSize={{ base: "3xl", sm: "4xl", md: "7xl" }}
-          lineHeight={"100%"}>
-          Help your friends grow their virtual garden!
-        </Heading>
+        <Stack
+          bg={"teal.500"}
+          py={16}
+          px={8}
+          spacing={{ base: 8, md: 10 }}
+          align={'center'}
+          direction={'column'}>
+          <Text
+            fontSize={{ base: 'xl', md: '2xl' }}
+            textAlign={'center'}
+            maxW={'3xl'}>
+            Our mission is to fight climate change by providing people with a clean, friendly and convenient way to fight.Using GoodGifts, you can gift people with virtual 3D interactive plants with 100% of the proceeds going to various climate action causes!
+            Each sendable plant is associated with a non-profit organization that is tirelessly climbing this uphill climate change battle, and they can use your help!
+          </Text>
+        </Stack>
+        <Stack
+          as={Box}
+          textAlign={"center"}
+          spacing={{ base: 8, md: 14 }}
+          py={{ base: 20, md: 36 }}
+        >
+          <Heading
+            fontWeight={600}
+            fontSize={{ base: "3xl", sm: "4xl", md: "7xl" }}
+            lineHeight={"110%"}
+          >
+            Help your friends grow their <br />
+            <Text as={"span"} color={"teal.400"}>
+              virtual garden!
+            </Text>
+          </Heading>
+
+        </Stack>
       </ChakraContainer>
 
     </Container>
