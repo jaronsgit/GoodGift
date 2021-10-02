@@ -28,13 +28,19 @@ const sendEmail = async (emailOptions) => {
 export default async (req, res) => {
   if (req.method === "POST") {
     // Process a POST request
-    const { sender, sender_email, message, receiver, receiver_email } =
-      req.body;
+    const {
+      sender,
+      sender_email,
+      message,
+      receiver,
+      receiver_email,
+      transactionID,
+    } = req.body;
 
     const from = `"${sender}" | <goodgiftdelivery@gmail.com>`;
     const subject = `You have received a gift on GoodGift!`;
     const text = `Name: ${sender}, Email: ${receiver_email}, Message: ${message}`;
-    const html = `<div><h1>${sender}</h1><h2>${receiver_email}</h2><p>${message}</p></div>`;
+    const html = `<div><h1>${sender}</h1><h2>${`https://goodgift.vercel.app/receive/${transactionID}`}</h2><p>${message}</p></div>`;
 
     await sendEmail({
       from: from, // sender address

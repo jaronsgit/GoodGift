@@ -51,6 +51,7 @@ export default function send() {
           message: data.message,
           sender: data.your_name,
           receiver_email: data.email,
+          transactionID: transactionID,
         })
         .then((response) => {
           console.log(response);
