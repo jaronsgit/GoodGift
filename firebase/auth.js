@@ -74,10 +74,16 @@ export async function getSentReceived(userEmail) {
       let relatedTransactions = { sent: [], received: [] };
       for (const transaction in value) {
         if (value[transaction].sender_email === userEmail) {
-          relatedTransactions.sent.push(value[transaction]);
+          relatedTransactions.sent.push({
+            transactionID: transaction,
+            data: value[transaction],
+          });
         }
         if (value[transaction].receiver_email === userEmail) {
-          relatedTransactions.received.push(value[transaction]);
+          relatedTransactions.received.push({
+            transactionID: transaction,
+            data: value[transaction],
+          });
         }
       }
       resolve(relatedTransactions);
