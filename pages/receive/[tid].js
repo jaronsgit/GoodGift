@@ -6,7 +6,9 @@ import {
   Html,
   useProgress,
   Center as DreiCenter,
+  Sky,
 } from "@react-three/drei";
+import { DoubleSide } from "three";
 import {
   Heading,
   Avatar,
@@ -27,6 +29,8 @@ import { useRouter } from "next/router";
 
 import NextLink from "next/link";
 
+import LinenFlower from "@/components/LinenFlower";
+
 import { useAuth, getTransactionData } from "../../firebase/auth";
 
 function Loader() {
@@ -34,26 +38,15 @@ function Loader() {
   return <Html center>{progress} %</Html>;
 }
 
-function BoxObject(props) {
-  // This reference will give us direct access to the THREE.Mesh object
-  const ref = useRef();
-  // Set up state for the hovered and active state
-  const [hovered, setHover] = useState(false);
-  const [active, setActive] = useState(false);
-  // Subscribe this component to the render-loop, rotate the mesh every frame
-  useFrame((state, delta) => (ref.current.rotation.x += 0.01));
-  // Return the view, these are regular Threejs elements expressed in JSX
+function GreenSquare() {
   return (
     <mesh
-      {...props}
-      ref={ref}
-      scale={active ? 1.5 : 1}
-      onClick={(event) => setActive(!active)}
-      onPointerOver={(event) => setHover(true)}
-      onPointerOut={(event) => setHover(false)}
+      position={[0, 0, 0]}
+      rotation={[Math.PI / 2, 0, 0]}
+      scale={[20, 20, 20]}
     >
-      <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color={hovered ? "hotpink" : "orange"} />
+      <planeBufferGeometry />
+      <meshBasicMaterial color="green" side={DoubleSide} />
     </mesh>
   );
 }
@@ -76,18 +69,6 @@ export default function Receive(props) {
 
   console.log(transactionData);
 
-  const transaction = {
-    imageUrl: "https://bit.ly/2Z4KKcF",
-    imageAlt: "Rear view of modern home with pool",
-    beds: 3,
-    baths: 2,
-    message: "Hello this is a message",
-    formattedPrice: "$1,900.00",
-    reviewCount: 34,
-    rating: 4,
-    sender_email: "test@email.com",
-  };
-
   return (
     <Center py={6} w="100%">
       <Flex
@@ -105,21 +86,19 @@ export default function Receive(props) {
           //   style={{ border: "1px solid red" }}
         >
           <div style={{ border: "0px solid red ", height: "500px" }}>
-            <Canvas shadows camera={{ fov: 50 }}>
-              <Suspense fallback={<Loader />}>
-                {/* <Stage
-              controls={ref}
-              //   preset="rembrandt"
-              //   intensity={1}
-              //   environment="city"
+            <Canvas
+              shadows
+              camera={{ fov: 50, distance: 50, position: [50, 50, 50] }}
+              style={{ borderRadius: "8px" }}
             >
-              <Center>
-                <Rose />
-              </Center>
-            </Stage> */}
+              <Suspense fallback={<Loader />}>
                 <ambientLight />
-                <pointLight position={[10, 10, 10]} />
-                <BoxObject position={[-1.2, 0, 0]} />
+                <Sky
+                  distance={150} // Camera distance (default=450000)
+                  sunPosition={[0, 1, 0]} // Sun position normal (default=[0, 1, 0])
+                />
+                <LinenFlower />
+                <GreenSquare />
               </Suspense>
               <OrbitControls ref={ref} autoRotate />
             </Canvas>
