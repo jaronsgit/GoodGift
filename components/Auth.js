@@ -30,9 +30,6 @@ import { useAuth } from "../firebase/auth";
 
 const AuthContent = ({ register, errors, type, ...rest }) => (
   <Stack {...rest}>
-    <Box as="a" href="/" aria-label="Back to homepage">
-      <Logo pb={8} w="200px" mx="auto" />
-    </Box>
     <FormControl isInvalid={errors.email && errors.email.message}>
       <FormLabel>Email Address</FormLabel>
       <Input
@@ -76,7 +73,7 @@ const FullScreenAuth = ({ type, onSubmit }) => {
         as="form"
         backgroundColor={[
           "none",
-          colorMode === "light" ? "gray.100" : "gray.900",
+          colorMode === "light" ? "gray.50" : "gray.900",
         ]}
         borderRadius={8}
         errors={errors}

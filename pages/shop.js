@@ -152,7 +152,7 @@ const FlowerProduct = ({ product }) => {
 export default function Shop() {
   return (
     <Center py={6}>
-      <Flex w="100%" flexDirection="column" alignItems="center">
+      <Flex w="100%" flexDirection="column" alignItems="center" ml={6} mr={6}>
         <Stat>
           <StatLabel>
             <b>Donations so far:</b>
