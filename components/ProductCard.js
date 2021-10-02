@@ -25,12 +25,13 @@ const ProductCard = ({ product, openAuthModal, onSignIn }) => {
   const handleClick = (e) => {
     if (auth.user) {
       e.preventDefault();
-      router.push("/gifts");
+      router.push(`/shop/${product.productID}`);
     } else {
       //   openAuthModal();
       onSignIn();
     }
   };
+
   return (
     <Box
       _hover={{

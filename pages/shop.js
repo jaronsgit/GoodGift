@@ -28,6 +28,7 @@ import TransactionCard from "@/components/TransactionCard";
 import ProductCard from "@/components/ProductCard";
 
 const flower1 = {
+  productID: 0,
   imageUrl:
     "https://www.almanac.com/sites/default/files/image_nodes/tulips-multicolored.jpg",
   imageAlt: "Flower 1",
@@ -38,6 +39,7 @@ const flower1 = {
 };
 
 const flower2 = {
+  productID: 0,
   imageUrl:
     "https://www.thespruce.com/thmb/6eQ9oR98za1HSk4ZnTpi743GOYA=/4508x2536/smart/filters:no_upscale()/beautiful-lily-varieties-to-grow-4136203-3-ecb49980016c4a498a90d6c379307ddd.jpg",
   imageAlt: "Flower 2",
@@ -48,6 +50,7 @@ const flower2 = {
 };
 
 const flower3 = {
+  productID: 0,
   imageUrl:
     "https://www.almanac.com/sites/default/files/image_nodes/rose-peach.jpg",
   imageAlt: "Flower 3",
@@ -58,6 +61,7 @@ const flower3 = {
 };
 
 const flower4 = {
+  productID: 0,
   imageUrl:
     "https://www.gardentech.com/-/media/Images/GardenTech-NA/US/blog/how-to-grow-sunflowers/sunflower-field-h.jpg",
   imageAlt: "Flower 4",
@@ -68,6 +72,7 @@ const flower4 = {
 };
 
 const flower5 = {
+  productID: 0,
   imageUrl:
     "https://www.almanac.com/sites/default/files/styles/opengraph/public/image_nodes/shasta-daisies-plant-grow.jpg?itok=1N6wp2N8",
   imageAlt: "Flower 5",
@@ -78,6 +83,7 @@ const flower5 = {
 };
 
 const flower6 = {
+  productID: 0,
   imageUrl:
     "https://images.unsplash.com/photo-1508788397430-55907b348ba8?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmVkd29vZCUyMHRyZWV8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80",
   imageAlt: "Flower 6",
