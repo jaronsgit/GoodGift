@@ -74,7 +74,7 @@ export default function Profile(props) {
               //   }}
             />
             <Heading fontSize={"2xl"} fontFamily={"body"}>
-              Welcome, {auth.user.email}
+              Welcome, {auth.user ? auth.user.email : ""}
             </Heading>
           </Box>
         </Center>
@@ -90,10 +90,12 @@ export default function Profile(props) {
           {sentReceived ? (
             sentReceived.sent.map((item) => (
               <TransactionCard
+                key={item.transactionID}
                 type={"sent"}
-                gift_id={item.gift_id}
-                receiver={item.receiver}
-                sender={item.sender}
+                gift_id={item.data.gift_id}
+                receiver={item.data.receiver}
+                sender={item.data.sender}
+                transactionID={item.transactionID}
               />
             ))
           ) : (
@@ -110,12 +112,14 @@ export default function Profile(props) {
         >
           <Heading>Received</Heading>
           {sentReceived ? (
-            sentReceived.received.map((item) => (
+            sentReceived.received.map((item, index) => (
               <TransactionCard
+                key={item.transactionID}
                 type={"received"}
-                gift_id={item.gift_id}
-                receiver={item.receiver}
-                sender={item.sender}
+                gift_id={item.data.gift_id}
+                receiver={item.data.receiver}
+                sender={item.data.sender}
+                transactionID={item.transactionID}
               />
             ))
           ) : (

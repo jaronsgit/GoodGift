@@ -11,6 +11,8 @@ import {
 } from "@chakra-ui/react";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 
+import NextLink from "next/link";
+
 const TransactionCard = ({
   gift_id,
   message,
@@ -19,6 +21,7 @@ const TransactionCard = ({
   sender,
   sender_email,
   type,
+  transactionID,
 }) => {
   const { colorMode } = useColorMode();
 
@@ -44,9 +47,11 @@ const TransactionCard = ({
           <Text fontSize="sm">Gift id: {gift_id}</Text>
         </Box>
         <Spacer />
-        <Button rightIcon={<ArrowForwardIcon />} variant="outline">
-          View Gift
-        </Button>
+        <NextLink href={`/receive/${transactionID}`}>
+          <Button rightIcon={<ArrowForwardIcon />} variant="outline">
+            View Gift
+          </Button>
+        </NextLink>
       </Flex>
     </Box>
   );
