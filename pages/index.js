@@ -62,7 +62,7 @@ export default function Home() {
             alignSelf={"center"}
             position={"relative"}
           >
-            <NextLink href="/gifts">
+            <NextLink href="/shop">
               <Button
                 colorScheme={"teal"}
                 bg={"teal.400"}
