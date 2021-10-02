@@ -42,7 +42,7 @@ const TransactionCard = ({
         <Box ml="3">
           <Text fontWeight="bold">
             {type == "sent" ? "Delivered to" : "Received from"}
-            <Badge ml="1">{type == "sent" ? sender : receiver}</Badge>
+            <Badge ml="1">{type == "sent" ? receiver : sender}</Badge>
           </Text>
           <Text fontSize="sm">Gift id: {gift_id}</Text>
         </Box>

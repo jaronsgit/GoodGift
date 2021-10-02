@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import "react"
 import { addTransactionData } from "../firebase/auth";
 import { Alert, AlertIcon, AlertTitle } from "@chakra-ui/react";
-
+import {useAuth } from "../firebase/auth";
 import {
     Button,
     Input,
@@ -19,11 +19,12 @@ import {
 
 
 export default function send() {
+    const auth = useAuth();
     const { handleSubmit, register, errors } = useForm();
     const toast = useToast()
     async function onSubmit(data){
 
-        let transactionID = await addTransactionData(0,data.message, data.receivers_name, data.email, data.your_name, "test");
+        let transactionID = await addTransactionData(0,data.message, data.receivers_name, data.email, data.your_name, auth.user.email);
         if (transactionID == null){
             toast({
                 title: "Payment Error...",
@@ -67,7 +68,7 @@ export default function send() {
             </FormControl>
 
             <FormControl>
-                <FormLabel htmlFor="email_label">Email</FormLabel>
+                <FormLabel htmlFor="email_label">Receiver Email</FormLabel>
                 <Input name="email" placeholder="123@example.com" ref={register({required: "The receiver's name is required.", pattern: {value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, message: "Please enter a valid email for the receiver."}})} />
                 {errors.email && <AlertPop title={errors.email.message} />}
             </FormControl>
