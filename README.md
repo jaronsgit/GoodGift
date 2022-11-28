@@ -159,9 +159,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Edan Toledo, Jaron Cohen, Roy Cohen
-- edan.toledo -at- live.com
+Jaron Cohen, Edan Toledo, Roy Cohen
 - jdicohen -at- gmail.com
+- edan.toledo -at- live.com
 - rtcohen99 -at- gmail.com
 
 <p align="right">(<a href="#top">back to top</a>)</p>
